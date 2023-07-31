@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Calculator</title>
+    <script>
+        function clk(val){
+            
+            if(val=='=')
+            {
+                document.getElementById('in').value=eval(document.getElementById('in').value);
+            }
+            else if(val=='`')
+            {
+                let str=document.getElementById('in').value;
+                let len=str.length;
+                document.getElementById('in').value=str.slice(0,len-1);
+            }
+            else if(val=='~')
+            {
+                document.getElementById('in').value="";
+            }
+            else{
+                document.getElementById('in').value=document.getElementById('in').value+val;
+            }
+        }
+    </script>
+</head>
+<body class="mt-4" style="background-color: violet">
+    <div class="container py-5 bg-danger" >
+        <div class="row ">
+            <h1 style="text-align: center; color: aliceblue; ">Calculator</h1>
+            <div class="col-md-9">
+            <input id="in" class="form-control" width="100%" type="text" placeholder="0" onke>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-6">
+                        <button  class="form-control" onclick="clk('`')" type="button" class="btn btn-dark">DEL</button>
+                    </div>
+                    <div class="col-6">
+                        <button  class="form-control" onclick="clk('~')" type="button" class="btn btn-dark">CLR</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-9">
+            <div class="row">
+                <div class="col">
+                    <button  class="form-control" onclick="clk('9')" type="button" class="btn btn-dark">9</button>
+                </div>
+                <div class="col">
+                    <button class="form-control" onclick="clk('8')" type="button" class="btn btn-dark">8</button>
+                </div>
+                <div class="col">
+                    <button class="form-control" onclick="clk('7')" type="button" class="btn btn-dark">7</button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <button class="form-control" onclick="clk('6')" type="button" class="btn btn-dark">6</button>
+                </div>
+                <div class="col">
+                    <button class="form-control" onclick="clk('5')" type="button" class="btn btn-dark">5</button>
+                </div>
+                <div class="col">
+                    <button class="form-control" onclick="clk('4')" type="button" class="btn btn-dark">4</button>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-3">
+                <button class="form-control" onclick="clk('=')" type="button" class="btn btn-dark" style="padding: 25px;">=</button>
+            </div>
+        </div>
+        <div class="row mt-2">
+                <div class="col">
+                    <button class="form-control" onclick="clk('3')" type="button" class="btn btn-dark">3</button>
+                </div>
+                <div class="col">
+                    <button class="form-control" onclick="clk('2')" type="button" class="btn btn-dark">2</button>
+                </div>
+                <div class="col">
+                    <button class="form-control" onclick="clk('1')" type="button" class="btn btn-dark">1</button>
+                </div>
+                <div class="col">
+                    <button class="form-control" onclick="clk('*')" type="button" class="btn btn-dark">*</button>
+                </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <button class="form-control" onclick="clk('0')" type="button" class="btn btn-dark">0</button>
+            </div>
+            <div class="col">
+                <button class="form-control" onclick="clk('+')" type="button" class="btn btn-dark">+</button>
+            </div>
+            <div class="col">
+                <button class="form-control" onclick="clk('-')" type="button" class="btn btn-dark">-</button>
+            </div>
+            <div class="col">
+                <button class="form-control" onclick="clk('/')" type="button" class="btn btn-dark">/</button>
+            </div>
+    </div>
+    <br>
+    </div>
+</body>
+</html>

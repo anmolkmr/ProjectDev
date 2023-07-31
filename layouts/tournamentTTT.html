@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>TicTacToe</title>
+    <style>
+        .ttt{
+            border-radius: 10px; height: 100px; width: 100px; margin: 1px; border: none; background-color: red;
+        }
+        .txt{
+            color: white;font-family: cursive;font-size: 60px;
+        }
+        </style>
+</head>
+<body>
+    <div style="height: 50px; background-color: red; color: aliceblue;">
+        <h1 style="text-align: center;">TIC TAC TOE TOURNAMENT</h1>
+    </div>
+    
+    <div class="row">
+        <div style="background-color: rgb(240, 13, 191); height: 100vh;" class="col-md-4" id="xscore">
+            <h2 style="text-align: center; color: white;">X's Score</h2>
+            <hr>
+        </div>
+        <div class="col-md-4 mt-5">
+            
+    
+                <div class="row d-flex justify-content-center">
+                    <button  type="button" class=" ttt" onclick="oc(this)" id="1" name="1"></button>
+                    <button class="ttt" type="button" onclick="oc(this)" id="2"></button>
+                    <button class="ttt" type="button" onclick="oc(this)" id="3"></button>
+                </div>
+                <div class="row  d-flex justify-content-center">
+                    <button class="ttt" type="button" onclick="oc(this)" id="4"></button>
+                    <button class="ttt" type="button" onclick="oc(this)" id="5"></button>
+                    <button class="ttt" type="button" onclick="oc(this)" id="6"></button>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <button class="ttt" type="button" onclick="oc(this)" id="7"></button>
+                    <button class="ttt" type="button" onclick="oc(this)" id="8"></button>
+                    <button class="ttt" type="button" onclick="oc(this)" id="9"></button>
+                </div>
+                <div style="margin-top: 30px; height: 50px;  color: rgb(104, 12, 195);">
+                    <h1 id="tu" style="text-align: center;">X's Turn</h1>
+                </div>
+                <div class=" d-flex justify-content-center mt-3">
+                    <button class="ttt" id="hd"  style="background-color: blueviolet;" type="button"  onclick="clrbox()"><img width="50" height="50" src="https://img.icons8.com/ios-filled/50/FFFFFF/available-updates.png" alt="available-updates"/></button>
+                </div>
+            
+        </div>
+        <div style="background-color: rgb(240, 13, 191);" class="col-md-4" id="oscore">
+            <h2 style="text-align: center; color: white;">O's Score</h2>
+            <hr>
+        </div>
+    </div>
+    
+    <div class="fixed-bottom" style="height: 50px; background-color: red; color: aliceblue;" >
+        <marquee behavior="scroll" direction="left" scrollamount="20" ><h1 id="winner"></h1></marquee>
+    </div>
+</body>
+<script>
+    let xw=0;
+    let ow=0;
+    let tour=0;
+    let turn=0;
+    let count=0;
+    let markx=[];
+    let marko=[];
+    let win=-1;
+    let marked=[];
+
+    const poss=[[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
+    function oc(x)
+    {
+        if(tour>3)
+        return;
+        
+        if(win==1||win==0)
+        return;
+        if(marked.includes(x.id))return;
+        if(0===turn)
+        {
+            x.innerHTML='<h1 class="txt">X</h1>';
+            markx.push(Number(x.id));
+            marked.push(x.id);
+            turn=1;
+            document.getElementById('tu').innerHTML="O's Turn";
+            
+            
+        }
+        else if(1===turn)
+        {
+            x.innerHTML='<h1 class="txt">O</h1>';
+            marko.push(Number(x.id));
+            marked.push(x.id);
+            turn=0;
+            document.getElementById('tu').innerHTML="X's Turn";
+            
+        }
+        count++;
+        if(count>4)
+        {
+            for(let i of poss)
+            {
+                if(marko.includes(i[0])&&marko.includes(i[1])&&marko.includes(i[2]))
+                {
+                    ow++;
+                    document.getElementById('tu').innerHTML="O Wins";
+                    win=1;
+
+                    let sp1=document.getElementById('xscore');
+                    let s1=document.createElement('h4');
+                    s1.style.color="white";
+                    s1.style.textAlign="center";
+                    s1.innerHTML='LOSE';
+                    sp1.appendChild(s1);
+
+                    let sp2=document.getElementById('oscore');
+                    let s2=document.createElement('h4');
+                    s2.style.color="white";
+                    s2.style.textAlign="center";
+                    s2.innerHTML='WIN';
+                    sp2.appendChild(s2);
+                    tour++;
+                    fillcol(i,win);
+                    break;
+                }
+                else if(markx.includes(i[0])&&markx.includes(i[1])&&markx.includes(i[2]))
+                {
+                    xw++;
+                    document.getElementById('tu').innerHTML="X Wins";
+                    win=0;
+
+                    let sp1=document.getElementById('oscore');
+                    let s1=document.createElement('h4');
+                    s1.style.color="white";
+                    s1.style.textAlign="center";
+                    s1.innerHTML='LOSE';
+                    sp1.appendChild(s1);
+
+                    let sp2=document.getElementById('xscore');
+                    let s2=document.createElement('h4');
+                    s2.style.color="white";
+                    s2.style.textAlign="center";
+                    s2.innerHTML='WIN';
+                    sp2.appendChild(s2);
+                    tour++;
+                    fillcol(i,win);
+                    break;
+                }
+            }
+        }
+        if(count==9&&win==-1)
+        {
+            tour++;
+            xw++;
+            ow++;
+            document.getElementById('tu').innerHTML="Draw";
+            let sp1=document.getElementById('oscore');
+                    let s1=document.createElement('h4');
+                    s1.style.color="white";
+                    s1.style.textAlign="center";
+                    s1.innerHTML='DRAW';
+                    sp1.appendChild(s1);
+
+                    let sp2=document.getElementById('xscore');
+                    let s2=document.createElement('h4');
+                    s2.style.color="white";
+                    s2.style.textAlign="center";
+                    s2.innerHTML='DRAW';
+                    sp2.appendChild(s2);
+            fillcol(0,win);
+        }
+        if(tour==3)
+        {
+            let d1=document.getElementById("winner");
+            if(xw>ow)
+            d1.innerHTML="X is winner by "+xw+":"+ow;
+            else if(ow>xw)
+            d1.innerHTML="O is winner by "+xw+":"+ow;
+            else 
+            d1.innerHTML="Tournament is tied.........";
+
+        }
+        
+    }
+    function fillcol(x,w)
+    {
+        if(w==0){
+       document.getElementById(x[0]).innerHTML='<h1 class="txt" style=color:lightgreen>X</h1>'; 
+        document.getElementById(x[1]).innerHTML='<h1 class="txt" style=color:lightgreen>X</h1>';   
+        document.getElementById(x[2]).innerHTML='<h1 class="txt" style=color:lightgreen>X</h1>';}
+        else if(w==1){
+       document.getElementById(x[0]).innerHTML='<h1 class="txt" style=color:lightgreen>O</h1>'; 
+        document.getElementById(x[1]).innerHTML='<h1 class="txt" style=color:lightgreen>O</h1>';   
+        document.getElementById(x[2]).innerHTML='<h1 class="txt" style=color:lightgreen>O</h1>';}
+        else if(w==-1){
+            for(let l1 of marko)
+            {
+                document.getElementById(l1).innerHTML='<h1 class="txt" style=color:yellow>O</h1>'; 
+            }
+            for(let l1 of markx)
+            {
+                document.getElementById(l1).innerHTML='<h1 class="txt" style=color:yellow>X</h1>'; 
+            }
+        }
+  
+    }
+    function clrbox()
+    {
+        if(tour>=3)
+        return;
+        let bx=["1","2","3","4","5","6","7","8","9"]
+        for(let i of bx)
+        {
+            document.getElementById(i).innerHTML="";
+        }
+        if(win==0)
+        {turn=0;
+            document.getElementById('tu').innerHTML="X's Turn";
+        }
+        else if(win==1)
+        {turn=1;
+            document.getElementById('tu').innerHTML="O's Turn";
+        }
+    count=0;
+    markx=[];
+    marko=[];
+    win=-1;
+    marked=[];
+    }
+    
+</script>
+</html>

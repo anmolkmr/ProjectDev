@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Cart</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-dark table-striped">
+                    <th>Item-ID</th>
+                    <th>Item-Name</th>
+                    <tr>
+                        <td>I01</td>
+                        <td>Apple</td>
+                    </tr>
+                    <tr>
+                        <td>I02</td>
+                        <td>Mango</td>
+                    </tr>
+                    <tr>
+                        <td>I03</td>
+                        <td>Orange</td>
+                    </tr>
+                    <tr>
+                        <td>I04</td>
+                        <td>Banana</td>
+                    </tr>
+                  </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-dark table-striped">
+                    <th>Item-ID</th>
+                    <th>Item-Name</th>
+                    <tr>
+                        <td>I05</td>
+                        <td>Grapes</td>
+                    </tr>
+                    <tr>
+                        <td>I06</td>
+                        <td>Guava</td>
+                    </tr>
+                    <tr>
+                        <td>I07</td>
+                        <td>Litchi</td>
+                    </tr>
+                    <tr>
+                        <td>I08</td>
+                        <td>Berry</td>
+                    </tr>
+                  </table>
+            </div>
+        </div> 
+        <div >
+            <input id="inp1" class="form-control m-3" placeholder="ItemId">
+            <input id="inp2" class="form-control m-3" placeholder="Quantity">
+            <center class="m-3">
+            <button onclick="add()"  type="button m-3" class="btn btn-success">ADD</button>
+            <button  type="button m-3" class="btn btn-success">FINISH</button>
+        </center>
+        </div>
+        <table class="table table-dark table-striped" id="output">
+        </table>
+    </div>
+</body>
+<script>
+    let ind=0;
+    let price={
+        I01:10,
+        I02:20,
+        I03:30,
+        I04:40,
+        I05:50,
+        I06:60,
+        I07:70,
+        I08:80,
+    }
+    let cart={
+        id:"",
+        v:""
+    }
+    let tot=0;
+    function add(){
+        let in1=document.getElementById('inp1').value;
+        let in2=document.getElementById('inp2').value;
+
+        
+        var out=document.getElementById('output');
+        if(in1=="")
+        window.alert("Please Enter ID")
+        if(in2=="")
+        window.alert("Please Enter Quantity")
+        if(ind==0)
+        {
+        const r1=out.insertRow(ind)
+        r1.insertCell(0).innerHTML='Item-ID';
+        r1.insertCell(1).innerHTML='Quantity';
+        r1.insertCell(2).innerHTML='Price';
+        r1.insertCell(3).innerHTML='Total';
+        r1.insertCell(3).innerHTML='Tot';
+        ind++;
+        }
+        if(ind>0){
+        cart.id+=in1;
+        cart.v+=[in2,ind];}
+    let row=out.insertRow(ind);
+    var c1=row.insertCell(0);
+    var c2=row.insertCell(1);
+    var c3=row.insertCell(2);
+    var c4=row.insertCell(3);
+    c1.innerHTML=in1;
+    c2.innerHTML=in2;
+    c3.innerHTML=price[in1];
+    c4.innerHTML=price[in1]*in2;
+    tot=tot+price[in1]*in2;
+    ind++;
+    }
+console.log(cart);
+    
+</script>
+</html>

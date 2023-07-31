@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Bubble Trouble</title>
+</head>
+<body >
+    <!-- for image=style="background-image: url('../images/bub.jpg');background-size: cover;" -->
+    <video style="position: fixed ;right: 0;bottom: 0;min-width: 100%; min-height: 100%;" autoplay muted loop id="myVideo">
+        <source src="/images/Bubbles Background.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+      <div style="position: fixed;bottom: 0;width: 100%;">
+    <h1 style="color: white; text-align: center;">Bubble Trouble</h1>
+    <div class="text-center">
+        <img height="500px" src="../images/a3.png" class="rounded" alt="...">
+        <h1 id="ot" style=" color: white; text-align: center; font-size: 300px; position: absolute; top: 40%; left: 50%; transform: translate(-50%,-50%);"></h1>
+      </div>
+    <div class="text-center mt-4">
+        <button id="score" onclick="generate()" class="btn btn-primary btn-lg">START </button>   
+        <h4 style="color: white;" id="time"></h4>
+    </div>
+    <div>
+        <marquee behavior="scroll" scrollamount="30" scroll style="color: white;"><h1 id="final"></h1></marquee>
+    </div>
+</div>
+</body>
+<script>
+    let alpha=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    let l=document.getElementById('ot');
+    let t=document.getElementById('time');
+    let sco=document.getElementById('score');
+    let currsco=0;
+    let gene=0;
+    let second=0;
+    let gameover=false;
+    let counting=0;
+    
+    window.addEventListener('keydown',checkkey);
+    function generate()
+    {
+        if(gameover)
+        return;
+        gene=alpha[Math.floor(Math.random()*26)];
+        l.innerHTML=gene;
+        if(counting==0)
+        {
+            counting=1;
+            countsec();
+        }
+    }
+    function checkkey(event)
+    {
+        if(gameover||counting==0)
+        return;
+        let k=event.key;
+        k=k.toUpperCase();
+        if((k>='a'&&k<='z')||(k>='A'&&k<='Z'))
+        {
+            if(gene==k)
+            {
+                currsco+=5;
+                sco.innerHTML=currsco;
+                generate();
+            }
+            else
+            {
+                sco.innerHTML='GAME OVER'
+                sco.setAttribute("class","btn btn-danger btn-lg disabled")
+                l.innerHTML=gene;
+                gameover=true;
+            }
+        }
+        if(gameover)
+        {
+            let f=document.getElementById('final');
+            f.innerHTML='YOUR FINAL SCORE IS '+currsco+'. YOUR LETTER TYPING SPEED IS '+(currsco/5)+' LETTER IN '+second+' SECONDS AND YOUR LETTER PER MINUTE IS '+Math.ceil(((currsco/5)/second)*60)+' LPM.';
+        }
+    }
+    function countsec()
+    {
+        second++;
+        if(!gameover)
+        setTimeout(countsec,1000);
+        t.innerHTML=second;
+        
+    }
+</script>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>TicTacToe</title>
+    <style>
+        .ttt{
+            border-radius: 10px; height: 100px; width: 100px; margin: 1px; border: none; background-color: seagreen;
+        }
+        .txt{
+            color: white;font-family: cursive;font-size: 60px;
+        }
+        </style>
+</head>
+<body>
+    <div style="height: 50px; background-color: seagreen; color: aliceblue;">
+        <h1 style="text-align: center;">TIC TAC TOE</h1>
+    </div>
+    <div class="container mt-5" >
+    
+        <div class="row d-flex justify-content-center">
+            <button  type="button" class=" ttt" onclick="oc(this)" id="1" name="1"></button>
+            <button class="ttt" type="button" onclick="oc(this)" id="2"></button>
+            <button class="ttt" type="button" onclick="oc(this)" id="3"></button>
+        </div>
+        <div class="row  d-flex justify-content-center">
+            <button class="ttt" type="button" onclick="oc(this)" id="4"></button>
+            <button class="ttt" type="button" onclick="oc(this)" id="5"></button>
+            <button class="ttt" type="button" onclick="oc(this)" id="6"></button>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <button class="ttt" type="button" onclick="oc(this)" id="7"></button>
+            <button class="ttt" type="button" onclick="oc(this)" id="8"></button>
+            <button class="ttt" type="button" onclick="oc(this)" id="9"></button>
+        </div>
+    </div>
+    <div style="margin-top: 30px; height: 50px;  color: rebeccapurple;">
+        <h1 id="tu" style="text-align: center;">X's Turn</h1>
+    </div>
+    <div class=" d-flex justify-content-center mt-3">
+        <button class="ttt" id="hd"  style="background-color: red;" type="button"  onclick="location.reload()"><img width="50" height="50" src="https://img.icons8.com/ios-filled/50/FFFFFF/available-updates.png" alt="available-updates"/></button>
+    </div>
+    <div class="fixed-bottom" style="height: 50px; background-color: seagreen; color: aliceblue;">
+    </div>
+</body>
+<script>
+    let turn=0;
+    let count=0;
+    let markx=[];
+    let marko=[];
+    let win=-1;
+    let marked=[];
+
+    const poss=[[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
+    function oc(x)
+    {
+        if(win==1||win==0)
+        return;
+        if(marked.includes(x.id))return;
+        if(0===turn)
+        {
+            x.innerHTML='<h1 class="txt">X</h1>';
+            markx.push(Number(x.id));
+            marked.push(x.id);
+            turn=1;
+            document.getElementById('tu').innerHTML="O's Turn";
+            
+        }
+        else if(1===turn)
+        {
+            x.innerHTML='<h1 class="txt">O</h1>';
+            marko.push(Number(x.id));
+            marked.push(x.id);
+            turn=0;
+            document.getElementById('tu').innerHTML="X's Turn";
+            
+        }
+        count++;
+        if(count>4)
+        {
+            for(let i of poss)
+            {
+                if(marko.includes(i[0])&&marko.includes(i[1])&&marko.includes(i[2]))
+                {
+                    document.getElementById('tu').innerHTML="O Wins";
+                    win=1;
+                    fillcol(i,win);
+                    break;
+                }
+                else if(markx.includes(i[0])&&markx.includes(i[1])&&markx.includes(i[2]))
+                {
+                    console.log("x wins");
+                    document.getElementById('tu').innerHTML="X Wins";
+                    win=0;
+                    fillcol(i,win);
+                    break;
+                }
+            }
+        }
+        if(count==9&&win==-1)
+        {
+            document.getElementById('tu').innerHTML="Draw";
+            fillcol(0,win);
+        }
+        
+    }
+    function fillcol(x,w)
+    {
+        if(w==0){
+       document.getElementById(x[0]).innerHTML='<h1 class="txt" style=color:red>X</h1>'; 
+        document.getElementById(x[1]).innerHTML='<h1 class="txt" style=color:red>X</h1>';   
+        document.getElementById(x[2]).innerHTML='<h1 class="txt" style=color:red>X</h1>';}
+        else if(w==1){
+       document.getElementById(x[0]).innerHTML='<h1 class="txt" style=color:red>O</h1>'; 
+        document.getElementById(x[1]).innerHTML='<h1 class="txt" style=color:red>O</h1>';   
+        document.getElementById(x[2]).innerHTML='<h1 class="txt" style=color:red>O</h1>';}
+        else if(w==-1){
+            for(let l1 of marko)
+            {
+                document.getElementById(l1).innerHTML='<h1 class="txt" style=color:yellow>O</h1>'; 
+            }
+            for(let l1 of markx)
+            {
+                document.getElementById(l1).innerHTML='<h1 class="txt" style=color:yellow>X</h1>'; 
+            }
+        }
+  
+    }
+    
+</script>
+</html>

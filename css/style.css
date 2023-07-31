@@ -1,0 +1,110 @@
+       body{
+        background-color: lightblue;
+        margin: 5px;
+       }
+       .tclass table{ 
+            
+            width: 100%;
+            padding: 10px;
+            border: 5px;
+            border-color: chocolate;
+            /* border-collapse: collapse; */
+            text-align: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: rgb(22, 255, 111);
+        }
+        .tclass th{
+            font-size: x-large;
+            border: darkblue solid;
+            padding: 10px;
+            color: rgb(255, 0, 85);
+        }
+        .tclass td{
+            color: rgb(27, 2, 2);
+            padding: 10px;
+            border: red solid;
+        }
+        .tclass marquee{
+            color: blue;
+            background-color: rgb(34, 255, 0);
+            font-size: xx-large;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        #lunch{
+            text-orientation: upright;
+            writing-mode: vertical-lr;
+        }
+        #top{
+            margin-top: 5px;
+            margin-left: 15%;
+            margin-right: 20%;
+            padding: 40px;
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            margin-left: 15%;
+            margin-right: 15%;
+            border-radius: 10px 10px 0px 0px;
+            height: 20px;
+        }
+        img{
+            float: left;
+            margin-top: 5px;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+        a{
+            padding: 40px;
+            color: green;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #bottom{
+            padding: 10px;
+            font-family:cursive;
+            float: left;
+            background-color: rgb(136, 136, 229);
+            margin-left: 15%;
+            margin-top: 3px;
+            color: rgb(255, 255, 255);
+            height: 700px;
+            width: 800px;
+            
+        }
+        #side{
+            background-color: blueviolet;
+            margin-left: 5px;
+            margin-top: 3px;
+            
+            height: 720px;
+            width: 246px;
+            float: left;
+        } 
+        ul{
+            padding: 70px;
+            color: aliceblue;
+        }
+        #leftpane{
+            background-color: rgb(126, 38, 163);
+            float: left;
+            border: 2px solid;
+            height: 300px;
+            margin-left: 15%;
+            margin-top: 3px;
+            width: 300px;
+        }
+        #midpane{
+            border: 2px solid;
+            background-color: rgb(236, 47, 164);
+            float: left;
+            height: 300px;
+            margin-top: 3px;
+            width: 465px;
+        }
+        #rightpane{
+            border: 2px solid;
+            background-color: rgb(126, 38, 163);
+            float: left;
+            height: 300px;
+            margin-top: 3px;
+            width: 300px;
+        }
+       

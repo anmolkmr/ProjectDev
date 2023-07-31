@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <center>
+    <div style="box-shadow: 0px 0px 15px 15px red; border-radius: 40px; padding: 30px; height: 700px; background-color: rgb(10, 181, 10); color: aliceblue;" class="container m-3">
+       
+            <h1 class="m-4">Store Mart</h1>
+            
+            <hr><br><br><br><br>
+            <form>
+            <div>
+                <h5>LOG IN</h5>
+                <br>
+                <input id="l1" style="width: 40%;" class="form-control text-center" placeholder="Username" type="email" required>
+                <br>
+                <div style="width: 40%;" class="input-group mb-3">
+                    <input id="ps"  type="password" class="form-control text-center" placeholder="Password" aria-label="Password" aria-describedby="btn" required>
+                    <button onclick="showpass()"  class="btn btn-primary" type="button" id="btn">Show</button>
+                  </div>
+            </div>
+            <br><br>
+            <button onclick="chk()" type="button" class="btn btn-warning">Login</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
+            </form>
+    </div>
+</center>
+</body>
+<script>
+    var dbs={
+        "anmol@gmail.com":"123",
+        "akmr@gmail.com":"123",
+        "aol@gmail.com":"123",
+        "al@gmail.com":"123",
+        "ol@gmail.com":"123"
+
+    }
+    const pas=document.getElementById('ps');
+    const butt=document.getElementById('btn');
+    function showpass()
+    {
+        if(butt.innerHTML=="Show")
+        {pas.setAttribute('type','text');
+        butt.innerHTML="Hide";}
+        else
+        {
+        pas.setAttribute('type','password');
+        butt.innerHTML="Show";
+        }
+    }
+    function chk(){
+        var x=document.getElementById('l1').value;
+        var y=document.getElementById('ps').value;
+    
+            if(!(x in dbs))
+            {
+                window.alert('Userid is incorrect');
+            }
+            else if(dbs[x]!=y){
+                window.alert('Password is incorrect');
+            }
+            else{
+                window.alert('Successful login');
+            }
+            document.getElementById('l1').value="";
+            document.getElementById('ps').value="";
+            document.getElementById('l1').focus();
+    }
+    </script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        var val=1;
+        var ind=1;
+        function fun()
+        {
+            let t=document.getElementById('tb');
+            var row=t.insertRow(ind);
+            var c1=row.insertCell(0);
+            var c2=row.insertCell(1);
+            var c3=row.insertCell(2);
+            var c4=row.insertCell(3);
+            c1.innerHTML=val+"";
+            c2.innerHTML="";
+            c3.innerHTML="";
+            c4.innerHTML="";
+            val++;
+            ind++;
+        }
+        </script>
+</head>
+<body>
+    <div class="container">
+    <table class="table mt-4" id="tb">
+        <th style="border: 1px solid;">SNO</th>
+        <th style="border: 1px solid;">NAME</th>
+        <th style="border: 1px solid;">ACHIEVEMENT</th>
+        <th style="border: 1px solid;">YEAR</th>
+    </table>
+    <button onclick="fun()" class="bg-danger"> ADD</button>
+    </div>
+</body>
+</html>

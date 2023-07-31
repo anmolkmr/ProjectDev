@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img onclick="chng()" id="ht" width="100" height="100" src="https://img.icons8.com/ios/100/F40303/like--v1.png" alt="like--v1"/>
+</body>
+<script>
+    let like=false;
+
+    function chng()
+    {
+        if(!like){
+        let a=document.getElementById('ht');
+        a.setAttribute("src","https://img.icons8.com/ios-filled/100/F40303/like--v1.png");
+        like=true;
+    }
+        else
+        {
+            let a=document.getElementById('ht');
+        a.setAttribute("src","https://img.icons8.com/ios/100/F40303/like--v1.png");
+        like=false;
+        }
+    }
+    </script>
+</html>

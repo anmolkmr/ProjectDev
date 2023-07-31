@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Form</title>
+    <script>
+        function agree()
+        {
+          if(document.getElementById('name').value==""&&document.getElementById('age').value=="")
+          window.alert("Please Enter Name and Age");
+          else if(document.getElementById('name').value=="")
+          window.alert("Please Enter Name");
+          else if(document.getElementById('age').value=="")
+          window.alert("Please Enter Age");
+          else{
+            let name=document.getElementById('name').value;
+            let age=document.getElementById('age').value;
+            document.getElementById('h').innerHTML="Welcome Mr/Mrs " + name + " and your age is " + age;}
+        }
+        function Disagree()
+        {
+          document.getElementById('name').value="";
+          document.getElementById('age').value="";
+        }
+    </script>
+</head>
+<body>
+    <div style="height: 58px; background-color: blueviolet; color: white; width: 100% ; margin-top: 0px;"><p style="text-align: center; font-size: 36px;"> WELCOME </p></div>
+    <br><br>
+    <div class="container">
+    <div style="width: 30%;margin-left: 35%;">
+        <div class="col">
+          <input id="name" type="text" class="form-control" placeholder="Name" aria-label="First name">
+        </div>
+        <br>
+        <div class="col">
+          <input id="age" type="number" min=0 class="form-control" placeholder="Age" aria-label="age">
+        </div>
+        <br>
+        <br>
+        <div style="margin-left: 80px;">
+        <button onclick="agree()" type="submit" class="btn btn-success">Agree</button>
+        <button onclick="Disagree()" class="btn btn-danger">Disagree</button>
+        <button onmouseover="Disagree()" class="btn btn-secondary">Reset</button>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h1 style="text-align: center;" id="h"><h1>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+1.absolute path == actual path (eg c/anmol/doc/img.jpg)//fullpath
+2.relative path == relatied to parent path (eg images/img)
+3.incase for going back in a path we use .. operator as exaple 
+4. navigation based text is means of HYPER in html and hyperlinks.
+5 #for id .for class and normal for element
+6.Try js to write in body at last because if we write it upside then while loading a page JS will use whole of its data without loading body so user will see content delayed
+7.16+4+"volvo"=20volvo
+"volvo"+16+4=Volvo164
+expression will be evaluated left to right
+//
+//elementbyattribute
+//elementbysetattribute
+===it is for type bhi same hona chahiye
+
+
+
+object supports json format but not map
+object keys are always string but map key can be anything

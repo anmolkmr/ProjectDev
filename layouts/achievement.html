@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACHIEVEMENT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <div class="mb-5" style="height: 50px; background-color: blueviolet;">
+        <h1 style="color: aliceblue; text-align: center;">ACHIEVEMENT</h1>
+    </div>
+    <div id="wr" class="container" style="text-align: center;">
+    <div   class="row">
+        <div class="col-md-1">
+            <h3>Sno</h3>
+        </div>
+        <div class="col-md-4">
+            <h3>Title</h3>
+        </div>
+        <div class="col-md-4">
+            <h3>Description</h3>
+        </div>
+        <div class="col-md-3">
+            <h3>Year</h3>
+        </div>
+    </div>
+    <div   class="row">
+        <div class="col-md-1">
+            <h4>1.</h4>
+        </div>
+        <div class="col-md-4">
+            <input type="text" placeholder="Title" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <input type="text" placeholder="Description" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <input type="text" placeholder="20XX" class="form-control">
+        </div>
+    </div>
+    </div>
+    <div  class="m-4">
+    <center>
+        <button onclick="fun()" style="width: 50px; height: 50px; font-size: 30px;" class="btn-primary rounded-3" >+</button>
+    </center>
+    </div>
+</body>
+<script>
+    var temp=2;
+    function fun()
+    {
+        var d1=document.getElementById('wr');
+
+        var w1=document.createElement('div');
+        w1.setAttribute('class','row mt-2');
+        
+        var c1=document.createElement('div');
+        c1.setAttribute('class','col-md-1 ');
+        var head1=document.createElement('h4');
+        head1.innerHTML=temp+".";
+        c1.appendChild(head1);
+        w1.appendChild(c1);
+
+        var c2=document.createElement('div');
+        c2.setAttribute('class','col-md-4');
+        c2.innerHTML='<input type="text" placeholder="Title" class="form-control">';
+        w1.appendChild(c2);
+
+        var c3=document.createElement('div');
+        c3.setAttribute('class','col-md-4');
+        c3.innerHTML='<input type="text" placeholder="Description" class="form-control">';
+        w1.appendChild(c3);
+
+        var c4=document.createElement('div');
+        c4.setAttribute('class','col-md-3');
+        c4.innerHTML='<input type="text" placeholder="20XX" class="form-control">';
+        w1.appendChild(c4);
+        
+
+
+        d1.appendChild(w1);
+        temp++;
+
+    }
+
+    </script>
+
+</html>
