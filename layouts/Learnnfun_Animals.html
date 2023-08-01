@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Learnnfun</title>
+</head>
+<body style="background-image: url(../images/749.jpg); background-size: cover; ">
+    <!--  -->
+    <div style="background-color: black; color: white; height: 50px; text-align: center;"><h1>Learn & Fun</h1></div>
+    <div  class="row mt-3">
+        <div style="margin-top: 80px;" class="col-md-3 ">
+            <center>
+            <hr>
+            <button id="0" onclick="chk(0)" class="btn-lg btn-danger"> Monkey</button>
+            <hr>
+            <button id="1" onclick="chk(1)" class="btn-lg btn-danger"> Lion</button>
+            <hr>
+            <button id="2" onclick="chk(2)" class="btn-lg btn-danger"> Elephant</button>
+            <hr>
+            <button id="3" onclick="chk(3)" class="btn-lg btn-danger"> Owl</button>
+            <hr>
+            <button id="4" onclick="chk(4)" class="btn-lg btn-danger"> Horse</button>
+            <hr>
+            <button id="5" onclick="chk(5)" class="btn-lg btn-danger"> Cat</button>
+            <hr>
+            </center>
+        </div>
+        <div class="col-md-6 mt-5">
+            <center>
+                <img style="margin-top: 140px;" onclick="chng()" id="abc" src="../images/play.png">
+                <div>
+                    <h1 id="score"></h1>     
+                </div>
+                <div >
+                    <h3 id="ans"></h3>
+                </div>
+            </center>
+        </div>
+        <div style="margin-top: 80px;" class="col-md-3">
+            <center>
+            <hr>
+            <button id="6" onclick="chk(6)" class="btn-lg btn-danger"> Zebra</button>
+            <hr>
+            <button id="7" onclick="chk(7)" class="btn-lg btn-danger"> Cow</button>
+            <hr>
+            <button id="8" onclick="chk(8)" class="btn-lg btn-danger"> Snake</button>
+            <hr>
+            <button id="9" onclick="chk(9)" class="btn-lg btn-danger"> Tiger</button>
+            <hr>
+            <button id="10" onclick="chk(10)" class="btn-lg btn-danger"> Polar</button>
+            <hr>
+            <button id="11" onclick="chk(11)" class="btn-lg btn-danger"> Dog</button>
+            <hr>
+        </center>
+        </div>
+    </div>
+</body>
+<script>
+    let arr=[];
+    let k;
+    let count=0;
+    let Animals={
+        5:"../images/Animal/cat.jpg",
+        7:"../images/Animal/cow.jpg",
+        11:"../images/Animal/dog.jpg",
+        2:"../images/Animal/ele.jpg",
+        4:"../images/Animal/horse.jpg",
+        1:"../images/Animal/lion.jpg",
+        0:"../images/Animal/monke.jpg",
+        3:"../images/Animal/owl.jpg",
+        8:"../images/Animal/snake.jpg",
+        9:"../images/Animal/tiger.jpg",
+        10:"../images/Animal/polar.jpg",
+        6:"../images/Animal/zebra.jpg"
+        
+    }
+    function chng()
+    {
+        k=Math.floor(Math.random()*12);
+        if(f(k))
+        {chng();
+            return ;
+        }
+        else
+        { 
+            arr.push(k);
+        } 
+        let a=document.getElementById('abc');
+        a.setAttribute("src",Animals[k]);
+        a.setAttribute("style","");
+        a.setAttribute("height","500px");
+        a.setAttribute("weight","400px");
+
+ 
+    }
+    function f(val)
+    {
+        for(let i=0;i<arr.length;i++)
+        {
+            if(arr[i]==val)
+            return true;
+        }
+        return false;
+    }
+    function chk(opt)
+    {
+        
+        if(opt==arr[arr.length-1])
+        {
+            count++;
+            document.getElementById(opt).setAttribute("class","btn-lg btn-success");
+            if(count==12)
+            {
+                let a=document.getElementById('abc');
+        a.setAttribute("src","../images/you-win.png");
+        let b=document.getElementById('score');
+        b.innerHTML=count+"/12";
+                
+            }
+            chng();
+        }
+        else 
+        {
+            let cheez=document.getElementById(k).innerHTML;
+            document.getElementById("ans").innerHTML="Answer was "+cheez;
+        let a=document.getElementById('abc');
+        a.setAttribute("src","../images/gm.png");
+        a.setAttribute("height","500px");
+        a.setAttribute("weight","400px");
+         
+        }
+        let b=document.getElementById('score');
+        b.innerHTML=count+"/12";
+    }
+</script>
+</html>

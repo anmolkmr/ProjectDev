@@ -16,7 +16,7 @@
       <div style="position: fixed;bottom: 0;width: 100%;">
     <h1 style="color: white; text-align: center;">Bubble Trouble</h1>
     <div class="text-center">
-        <img height="500px" src="../images/a3.png" class="rounded" alt="...">
+        <img id="gm" height="500px" src="../images/a3.png" class="rounded" alt="...">
         <h1 id="ot" style=" color: white; text-align: center; font-size: 300px; position: absolute; top: 40%; left: 50%; transform: translate(-50%,-50%);"></h1>
       </div>
     <div class="text-center mt-4">
@@ -85,7 +85,7 @@
         second++;
         if(!gameover)
         setTimeout(countsec,1000);
-        t.innerHTML=second;
+        t.innerHTML="Time: "+second+ " Sec";
         
     }
 </script>
